@@ -1,11 +1,20 @@
 {
   "expo": {
-    "name": "Nurjahan-App",
-    "slug": "Nurjahan-App",
+    "name": "MD_Kayesur",
+    "slug": "MD_Kayesur",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "nurjahanapp",
+    "icon": "./assets/images/photo.jpg",
+    "splash": {
+      "image": "./assets/images/photo.jpg"
+      // "resizeMode": "contain",
+      // "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "scheme": "mdkayesurapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
