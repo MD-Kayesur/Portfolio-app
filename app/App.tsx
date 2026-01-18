@@ -1,23 +1,51 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Image, StyleSheet, Text, FlatList, Pressable, Animated } from 'react-native';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import React, { useEffect, useRef } from "react";
+import {
+  Animated,
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-import Navbar from './Navbar';
-import AppHeader from './AppHeader';
+import { router } from "expo-router";
+import AppHeader from "./AppHeader";
+import Navbar from "./Navbar";
 
 // Your app icon from the URL you provided
-const APP_ICON_URL = 'https://i.ibb.co.com/1JmqkgsR/photo-2026-01-17-14-45-42.jpg';
+const APP_ICON_URL =
+  "https://i.ibb.co.com/1JmqkgsR/photo-2026-01-17-14-45-42.jpg";
 
 // Dummy app icons
 const apps = [
-  { id: '1', name: 'Chat', icon: 'https://img.icons8.com/color/96/chat.png' },
-  { id: '2', name: 'Camera', icon: 'https://img.icons8.com/color/96/camera.png' },
-  { id: '3', name: 'Music', icon: 'https://img.icons8.com/color/96/music.png' },
-  { id: '4', name: 'Maps', icon: 'https://img.icons8.com/color/96/map.png' },
-  { id: '5', name: 'Phone', icon: 'https://img.icons8.com/color/96/phone.png' },
-  { id: '6', name: 'Mail', icon: 'https://img.icons8.com/color/96/email.png' },
-  { id: '7', name: 'Browser', icon: 'https://img.icons8.com/color/96/internet.png' },
-  { id: '8', name: 'Settings', icon: 'https://img.icons8.com/color/96/settings.png' },
+  { id: "1", name: "Chat", icon: "https://img.icons8.com/color/96/chat.png" },
+  {
+    id: "2",
+    name: "Camera",
+    icon: "https://img.icons8.com/color/96/camera.png",
+  },
+  { id: "3", name: "Music", icon: "https://img.icons8.com/color/96/music.png" },
+  { id: "4", name: "Maps", icon: "https://img.icons8.com/color/96/map.png" },
+  { id: "5", name: "Phone", icon: "https://img.icons8.com/color/96/phone.png" },
+  { id: "6", name: "Mail", icon: "https://img.icons8.com/color/96/email.png" },
+  {
+    id: "7",
+    name: "Browser",
+    icon: "https://img.icons8.com/color/96/internet.png",
+  },
+  {
+    id: "8",
+    name: "Settings",
+    icon: "https://img.icons8.com/color/96/settings.png",
+  },
+  {
+    id: "9",
+    name: "Video",
+    icon: "https://img.icons8.com/color/96/video.png",
+    onPress: () => router.push("/video-record"),
+  },
 ];
 
 export default function App() {
@@ -52,27 +80,20 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <View style={{ flex: 1 }}>
-
           {/* Top Navbar */}
           <Navbar />
 
           {/* Animated App Header with Icon and Name */}
-          <Animated.View 
+          <Animated.View
             style={[
               styles.animatedHeader,
               {
                 opacity: fadeAnim,
-                transform: [
-                  { translateY: slideAnim },
-                  { scale: scaleAnim }
-                ],
+                transform: [{ translateY: slideAnim }, { scale: scaleAnim }],
               },
             ]}
           >
-            <Image
-              source={{ uri: APP_ICON_URL }}
-              style={styles.appIcon}
-            />
+            <Image source={{ uri: APP_ICON_URL }} style={styles.appIcon} />
             <Text style={styles.appName}>MD_Kayesur</Text>
           </Animated.View>
 
@@ -84,16 +105,16 @@ export default function App() {
             contentContainerStyle={styles.grid}
             renderItem={({ item }) => (
               <View style={styles.appItem}>
-                <Pressable 
-                  onPress={() => alert(`${item.name} pressed`)}
+                <Pressable
+                  onPress={() => ro}
                   style={({ pressed }) => [
                     styles.appButton,
-                    pressed && styles.appButtonPressed
+                    pressed && styles.appButtonPressed,
                   ]}
                 >
-                  <Image 
-                    source={{ uri: item.icon }} 
-                    style={styles.dummyAppIcon} 
+                  <Image
+                    source={{ uri: item.icon }}
+                    style={styles.dummyAppIcon}
                   />
                   <Text style={styles.appText}>{item.name}</Text>
                 </Pressable>
@@ -103,7 +124,6 @@ export default function App() {
 
           {/* Bottom Navigation */}
           <AppHeader />
-
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
@@ -113,20 +133,20 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e0eafc',
+    backgroundColor: "#e0eafc",
   },
   animatedHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 20,
-    backgroundColor: 'rgba(230, 244, 254, 0.9)',
+    backgroundColor: "rgba(230, 244, 254, 0.9)",
     marginHorizontal: 20,
     marginTop: 10,
     marginBottom: 20,
     borderRadius: 15,
     elevation: 5,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -136,14 +156,14 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     borderWidth: 2,
-    borderColor: '#007AFF',
+    borderColor: "#007AFF",
     marginRight: 15,
   },
   appName: {
     fontSize: 28,
-    fontWeight: 'bold',
-    color: '#007AFF',
-    textShadowColor: 'rgba(0, 122, 255, 0.2)',
+    fontWeight: "bold",
+    color: "#007AFF",
+    textShadowColor: "rgba(0, 122, 255, 0.2)",
     textShadowOffset: { width: 0, height: 2 },
     textShadowRadius: 3,
   },
@@ -154,13 +174,13 @@ const styles = StyleSheet.create({
   },
   appItem: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     marginVertical: 10,
-    maxWidth: '25%',
+    maxWidth: "25%",
   },
   appButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 10,
   },
   appButtonPressed: {
@@ -175,11 +195,8 @@ const styles = StyleSheet.create({
   },
   appText: {
     fontSize: 12,
-    textAlign: 'center',
-    color: '#333',
-    fontWeight: '500',
+    textAlign: "center",
+    color: "#333",
+    fontWeight: "500",
   },
 });
-
-
- 
