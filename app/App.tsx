@@ -20,31 +20,31 @@ const APP_ICON_URL =
 
 // Dummy app icons
 const apps = [
-  { id: "1", name: "Chat", icon: "https://img.icons8.com/color/96/chat.png" },
+  { id: "1", name: "chat", icon: "https://img.icons8.com/color/96/chat.png" },
   {
     id: "2",
-    name: "Camera",
+    name: "camera",
     icon: "https://img.icons8.com/color/96/camera.png",
   },
-  { id: "3", name: "Music", icon: "https://img.icons8.com/color/96/music.png" },
-  { id: "4", name: "Maps", icon: "https://img.icons8.com/color/96/map.png" },
-  { id: "5", name: "Phone", icon: "https://img.icons8.com/color/96/phone.png" },
-  { id: "6", name: "Mail", icon: "https://img.icons8.com/color/96/email.png" },
+  { id: "3", name: "music", icon: "https://img.icons8.com/color/96/music.png" },
+  { id: "4", name: "maps", icon: "https://img.icons8.com/color/96/map.png" },
+  { id: "5", name: "phone", icon: "https://img.icons8.com/color/96/phone.png" },
+  { id: "6", name: "mail", icon: "https://img.icons8.com/color/96/email.png" },
   {
     id: "7",
-    name: "Browser",
+    name: "browser",
     icon: "https://img.icons8.com/color/96/internet.png",
   },
   {
     id: "8",
-    name: "Settings",
+    name: "settings",
     icon: "https://img.icons8.com/color/96/settings.png",
   },
   {
     id: "9",
-    name: "Video",
+    name: "video-record",
     icon: "https://img.icons8.com/color/96/video.png",
-    onPress: () => router.push("/video-record"),
+    // onPress: () => router.push("/video-record"),
   },
 ];
 
@@ -106,7 +106,8 @@ export default function App() {
             renderItem={({ item }) => (
               <View style={styles.appItem}>
                 <Pressable
-                  onPress={() => ro}
+                  onPress={() => router.push(item.name)}
+                  // onPress={() => alert(`${item.name} pressed`)}
                   style={({ pressed }) => [
                     styles.appButton,
                     pressed && styles.appButtonPressed,
